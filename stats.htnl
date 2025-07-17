@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>VIBE X ESPORTS | Stats</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body class="stats-page">
+  <header>
+    <h1>Jamoa Statistikalari</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="team.html">Team</a>
+      <a href="stats.html" class="active">Stats</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </header>
+
+  <section class="chart-section">
+    <h2 class="glow">Player Performance</h2>
+    <canvas id="playerStats" width="400" height="400"></canvas>
+  </section>
+
+  <script>
+    const ctx = document.getElementById('playerStats');
+    new Chart(ctx, {
+      type: 'radar',
+      data: {
+        labels: ['Aim', 'Strategy', 'Teamplay', 'Communication', 'Reflex'],
+        datasets: [
+          {
+            label: 'Sardor',
+            data: [90, 85, 80, 75, 70],
+            fill: true,
+            backgroundColor: 'rgba(0, 255, 255, 0.2)',
+            borderColor: 'cyan',
+            pointBackgroundColor: 'cyan',
+          },
+          {
+            label: 'Hoji',
+            data: [85, 70, 75, 80, 90],
+            fill: true,
+            backgroundColor: 'rgba(255, 0, 255, 0.2)',
+            borderColor: 'magenta',
+            pointBackgroundColor: 'magenta',
+          },
+          {
+            label: 'Dilyorjon',
+            data: [60, 90, 85, 80, 65],
+            fill: true,
+            backgroundColor: 'rgba(0, 255, 0, 0.2)',
+            borderColor: 'lime',
+            pointBackgroundColor: 'lime',
+          },
+          {
+            label: 'Zetron',
+            data: [95, 60, 70, 60, 95],
+            fill: true,
+            backgroundColor: 'rgba(255, 165, 0, 0.2)',
+            borderColor: 'orange',
+            pointBackgroundColor: 'orange',
+          },
+        ]
+      },
+      options: {
+        scales: {
+          r: {
+            angleLines: { display: false },
+            suggestedMin: 0,
+            suggestedMax: 100
+          }
+        },
+        plugins: {
+          legend: {
+            labels: {
+              color: '#fff'
+            }
+          }
+        }
+      }
+    });
+  </script>
+
+  <footer>
+    <p>&copy; 2025 VIBE X ESPORTS. All rights reserved.</p>
+  </footer>
+</body>
+</html>

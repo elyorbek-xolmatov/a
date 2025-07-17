@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VIBE X ESPORTS | PUBG Mobile Pro Team</title>
+  <meta name="description" content="Professional PUBG Mobile esports jamoasi. Turnirlar, jamoa a'zolari va natijalar.">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Rajdhani:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" type="image/png" href="favicon.png">
+</head>
+<body>
+  <!-- Loader -->
+  <div class="loader">
+    <div class="loader-logo">
+      <span>VIBE</span><span class="x">X</span>
+    </div>
+    <div class="progress-bar"><div class="progress"></div></div>
+  </div>
+
+  <!-- Particles background -->
+  <div id="particles-js"></div>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <div class="logo"><span>VIBE</span><span class="x">X</span><span class="esports">ESPORTS</span></div>
+      <div class="nav-links" id="navLinks">
+        <a href="#home" class="nav-link active">Bosh sahifa</a>
+        <a href="#team" class="nav-link">Jamoa</a>
+        <a href="#stats" class="nav-link">Statistika</a>
+        <a href="#tournaments" class="nav-link">Turnirlar</a>
+        <a href="#contact" class="nav-link">Bog‘lanish</a>
+      </div>
+      <button class="menu-toggle" id="menuToggle"><i class="fas fa-bars"></i></button>
+      <button class="theme-toggle"><i class="fas fa-moon"></i></button>
+    </div>
+  </nav>
+
+  <!-- Hero section -->
+  <section id="home" class="hero">
+    <div class="hero-video">
+      <video autoplay muted loop playsinline>
+        <source src="pubg-gameplay.mp4" type="video/mp4">
+      </video>
+      <div class="video-overlay"></div>
+    </div>
+    <div class="hero-content">
+      <div class="hero-titles">
+        <h1 class="hero-title glitch" data-text="VIBE X ESPORTS">VIBE X ESPORTS</h1>
+        <h2 class="hero-subtitle">PUBG MOBILE PROFESSIONAL JAMOASI</h2>
+      </div>
+      <div class="hero-buttons">
+        <a href="#team" class="btn btn-primary"><span>Jamoamiz bilan tanishing</span><i class="fas fa-chevron-right"></i></a>
+        <a href="#tournaments" class="btn btn-outline"><span>Turnirlarni ko‘rish</span><i class="fas fa-trophy"></i></a>
+      </div>
+    </div>
+    <div class="scroll-down"><i class="fas fa-chevron-down"></i></div>
+  </section>
+
+  <!-- Team section -->
+  <section id="team" class="team-section">
+    <div class="section-header">
+      <h2 class="section-title">Bizning <span>Jamoa</span></h2>
+      <p class="section-subtitle">G‘alabalar ortidagi chempionlar bilan tanishing</p>
+    </div>
+    <div class="team-grid">
+      <div class="player-card">
+        <div class="player-image">
+          <img src="player1.jpg" alt="Sardor VIBE X" loading="lazy">
+          <div class="player-overlay">
+            <div class="player-stats">
+              <div class="stat"><span class="stat-name">K/D</span><span class="stat-value">5.2</span></div>
+              <div class="stat"><span class="stat-name">Headshots</span><span class="stat-value">68%</span></div>
+              <div class="stat"><span class="stat-name">O‘rtacha zarar</span><span class="stat-value">890</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="player-info">
+          <h3 class="player-name">Sardor VIBE X</h3>
+          <span class="player-role">IGL / Kapitan</span>
+          <div class="player-socials">
+            <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+            <a href="#" class="social-link"><i class="fab fa-telegram"></i></a>
+          </div>
+        </div>
+      </div>
+      <!-- Yana 3 o‘yinchi uchun shu tarzda -->
+    </div>
+  </section>
+
+  <!-- Stats section -->
+  <section id="stats" class="stats-section">
+    <div class="section-header">
+      <h2 class="section-title">Jamoa <span>Statistikasi</span></h2>
+      <p class="section-subtitle">O‘yinchilar bo‘yicha asosiy ko‘rsatkichlar</p>
+    </div>
+    <div class="stats-grid">
+      <div class="chart-container">
+        <h3 class="chart-title">Sardor VIBE X</h3>
+        <canvas id="radar-sardor"></canvas>
+      </div>
+      <!-- Yana 3 o‘yinchi uchun chart-container -->
+    </div>
+  </section>
+
+  <!-- Tournaments section -->
+  <section id="tournaments" class="tournaments-section">
+    <div class="section-header">
+      <h2 class="section-title">So‘nggi <span>Turnirlar</span></h2>
+      <p class="section-subtitle">Natijalar va kelgusi o‘yinlar</p>
+    </div>
+    <div class="tournament-cards">
+      <!-- Turnir kartalari shu yerda -->
+    </div>
+    <div class="countdown">
+      <div class="countdown-item"><span id="countdown-days">0</span><div class="countdown-label">Kun</div></div>
+      <div class="countdown-item"><span id="countdown-hours">0</span><div class="countdown-label">Soat</div></div>
+      <div class="countdown-item"><span id="countdown-minutes">0</span><div class="countdown-label">Daqiqa</div></div>
+      <div class="countdown-item"><span id="countdown-seconds">0</span><div class="countdown-label">Sekund</div></div>
+    </div>
+  </section>
+
+  <!-- Contact section -->
+  <section id="contact" class="contact-section">
+    <div class="contact-container">
+      <form class="contact-form">
+        <input type="text" name="name" placeholder="Ismingiz" required>
+        <input type="email" name="email" placeholder="Email" required>
+        <textarea name="message" placeholder="Xabaringiz" required></textarea>
+        <button type="submit" class="submit-btn">Yuborish <i class="fas fa-paper-plane"></i></button>
+      </form>
+      <div class="contact-info">
+        <div class="contact-methods">
+          <div class="contact-item"><i class="fab fa-instagram contact-icon"></i><span>@stellar.edition</span></div>
+          <div class="contact-item"><i class="fab fa-telegram contact-icon"></i><span>@legendjonnn</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="footer-logo"><span>VIBE</span><span class="x">X</span><span>ESPORTS</span></div>
+      <div class="footer-bottom">
+        <p>&copy; 2024 VIBE X ESPORTS. Barcha huquqlar himoyalangan.</p>
+        <p>Professional PUBG Mobile jamoasi.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Chatbot -->
+  <div class="chatbot-container">
+    <div class="chatbot-header">
+      <h4>VIBE X Yordamchi</h4>
+      <button class="close-chatbot"><i class="fas fa-times"></i></button>
+    </div>
+    <div class="chatbot-messages"></div>
+    <div class="chatbot-input">
+      <input type="text" placeholder="Savolingizni yozing...">
+      <button class="send-button"><i class="fas fa-paper-plane"></i></button>
+    </div>
+    <div class="chatbot-prompts">
+      <span class="chatbot-prompt">Keyingi match qachon?</span>
+      <span class="chatbot-prompt">Jamoa sardori kim?</span>
+      <span class="chatbot-prompt">Instagram manzilingiz?</span>
+      <span class="chatbot-prompt">Telegram linki</span>
+      <span class="chatbot-prompt">Statistikani ko‘rsat</span>
+      <span class="chatbot-prompt">Rahmat</span>
+    </div>
+  </div>
+  <button class="chatbot-toggle"><i class="fas fa-robot"></i></button>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
