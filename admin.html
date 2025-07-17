@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Panel | VIBE X ESPORTS</title>
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+  <link rel="stylesheet" href="admin.css">
+</head>
+<body>
+  <!-- SIDEBAR -->
+  <section id="sidebar">
+    <a href="#" class="brand">
+      <i class='bx bxs-joystick bx-lg'></i>
+      <span class="text">VIBE X Admin</span>
+    </a>
+    <ul class="side-menu top">
+      <li class="active"><a href="#" data-page="dashboard"><i class='bx bxs-dashboard bx-sm'></i><span class="text">Dashboard</span></a></li>
+      <li><a href="#" data-page="users"><i class='bx bxs-group bx-sm'></i><span class="text">Foydalanuvchilar</span></a></li>
+      <li><a href="#" data-page="tournaments"><i class='bx bxs-trophy bx-sm'></i><span class="text">Turnirlar</span></a></li>
+      <li><a href="#" data-page="settings"><i class='bx bxs-cog bx-sm'></i><span class="text">Sozlamalar</span></a></li>
+    </ul>
+    <ul class="side-menu bottom">
+      <li><a href="#" id="logoutBtn" class="logout"><i class='bx bx-power-off bx-sm bx-burst-hover'></i><span class="text">Chiqish</span></a></li>
+    </ul>
+  </section>
+  <!-- SIDEBAR -->
+
+  <!-- CONTENT -->
+  <section id="content">
+    <!-- NAVBAR -->
+    <nav>
+      <i class='bx bx-menu bx-sm'></i>
+      <a href="#" class="nav-link">Admin Panel</a>
+      <form action="#">
+        <div class="form-input">
+          <input type="search" placeholder="Qidirish...">
+          <button type="submit" class="search-btn"><i class='bx bx-search'></i></button>
+        </div>
+      </form>
+      <input type="checkbox" class="checkbox" id="switch-mode" hidden />
+      <label class="swith-lm" for="switch-mode">
+        <i class="bx bxs-moon"></i>
+        <i class="bx bx-sun"></i>
+        <div class="ball"></div>
+      </label>
+      <a href="#" class="notification" id="notificationIcon">
+        <i class='bx bxs-bell bx-tada-hover'></i>
+        <span class="num">2</span>
+      </a>
+      <div class="notification-menu" id="notificationMenu">
+        <ul>
+          <li>Yangi foydalanuvchi ro‘yxatdan o‘tdi</li>
+          <li>Statistikada o‘zgarish</li>
+        </ul>
+      </div>
+      <a href="#" class="profile" id="profileIcon">
+        <img src="https://placehold.co/600x400/png" alt="Profile">
+      </a>
+      <div class="profile-menu" id="profileMenu">
+        <ul>
+          <li><a href="#">Profilim</a></li>
+          <li><a href="#">Sozlamalar</a></li>
+          <li><a href="#" id="logoutBtn2">Chiqish</a></li>
+        </ul>
+      </div>
+    </nav>
+    <!-- NAVBAR -->
+
+    <!-- MAIN -->
+    <main id="main-content">
+      <!-- Dashboard sahifasi (default) -->
+      <div id="dashboard-page" class="admin-page">
+        <div class="head-title">
+          <div class="left">
+            <h1>Dashboard</h1>
+            <ul class="breadcrumb">
+              <li><a href="#">Dashboard</a></li>
+              <li><i class='bx bx-chevron-right'></i></li>
+              <li><a class="active" href="#">Home</a></li>
+            </ul>
+          </div>
+        </div>
+        <ul class="box-info">
+          <li>
+            <i class='bx bxs-group'></i>
+            <span class="text">
+              <h3 id="userCount">0</h3>
+              <p>Foydalanuvchilar</p>
+            </span>
+          </li>
+          <li>
+            <i class='bx bxs-trophy'></i>
+            <span class="text">
+              <h3>5</h3>
+              <p>Turnirlar</p>
+            </span>
+          </li>
+        </ul>
+      </div>
+      <!-- Foydalanuvchilar sahifasi -->
+      <div id="users-page" class="admin-page" style="display:none;">
+        <h2>Foydalanuvchilar ro‘yxati</h2>
+        <div id="userList"></div>
+      </div>
+      <!-- Turnirlar sahifasi -->
+      <div id="tournaments-page" class="admin-page" style="display:none;">
+        <h2>Turnirlar boshqaruvi</h2>
+        <div style="color:#888;">Bu bo‘lim tez orada to‘liq ishlaydi.</div>
+      </div>
+      <!-- Sozlamalar sahifasi -->
+      <div id="settings-page" class="admin-page" style="display:none;">
+        <h2>Sozlamalar</h2>
+        <div style="color:#888;">Tez orada...</div>
+      </div>
+    </main>
+    <!-- MAIN -->
+  </section>
+  <!-- CONTENT -->
+
+  <div class="sidebar-overlay"></div>
+
+  <script src="admin.js"></script>
+</body>
+</html> 

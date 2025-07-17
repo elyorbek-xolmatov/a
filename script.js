@@ -268,3 +268,93 @@ if (chatbotPrompts && chatInput && sendButton) {
     });
   });
 }
+
+// === Auth: Login/Register/Admin Panel ===
+function getUsers() {
+  return JSON.parse(localStorage.getItem('users') || '[]');
+}
+function saveUser(user) {
+  const users = getUsers();
+  users.push(user);
+  localStorage.setItem('users', JSON.stringify(users));
+}
+function findUser(username) {
+  return getUsers().find(u => u.username === username);
+}
+// Register
+const registerForm = document.getElementById('registerForm');
+if (registerForm) {
+  registerForm.addEventListener('submit', function(e) {
+    e.preventDefault();
+    const fullname = registerForm.fullname.value.trim();
+    const username = registerForm.username.value.trim();
+    const password = registerForm.password.value;
+    const confirm = registerForm.confirm.value;
+    const errorDiv = document.getElementById('registerError');
+    errorDiv.style.display = 'none';
+    if (!fullname || !username || !password || !confirm) {
+      errorDiv.textContent = 'Barcha maydonlarni to‘ldiring!';
+      errorDiv.style.display = 'block';
+      return;
+    }
+    if (password.length < 5) {
+      errorDiv.textContent = 'Parol kamida 5 ta belgidan iborat bo‘lishi kerak!';
+      errorDiv.style.display = 'block';
+      return;
+    }
+    if (password !== confirm) {
+      errorDiv.textContent = 'Parollar mos emas!';
+      errorDiv.style.display = 'block';
+      return;
+    }
+    if (findUser(username)) {
+      errorDiv.textContent = 'Bu foydalanuvchi nomi band!';
+      errorDiv.style.display = 'block';
+      return;
+    }
+    saveUser({ fullname, username, password, isAdmin: false });
+    localStorage.setItem('currentUser', JSON.stringify({ username, fullname, isAdmin: false }));
+    window.location.href = 'index.html';
+  });
+}
+// Login
+const loginForm = document.getElementById('loginForm');
+if (loginForm) {
+  loginForm.addEventListener('submit', function(e) {
+    e.preventDefault();
+    const username = loginForm.username.value.trim();
+    const password = loginForm.password.value;
+    const errorDiv = document.getElementById('loginError');
+    errorDiv.style.display = 'none';
+    // Admin login (maxfiy)
+    if (username === 'admin' && password === 'admin123') {
+      localStorage.setItem('currentUser', JSON.stringify({ username: 'admin', fullname: 'Admin', isAdmin: true }));
+      window.location.href = 'admin.html';
+      return;
+    }
+    const user = findUser(username);
+    if (!user || user.password !== password) {
+      errorDiv.textContent = 'Foydalanuvchi nomi yoki parol xato!';
+      errorDiv.style.display = 'block';
+      return;
+    }
+    localStorage.setItem('currentUser', JSON.stringify({ username: user.username, fullname: user.fullname, isAdmin: false }));
+    window.location.href = 'index.html';
+  });
+}
+// Logout (admin panel)
+const logoutBtn = document.getElementById('logoutBtn');
+if (logoutBtn) {
+  logoutBtn.addEventListener('click', function(e) {
+    e.preventDefault();
+    localStorage.removeItem('currentUser');
+    window.location.href = 'login.html';
+  });
+}
+// Admin panelga faqat admin kirishi
+if (window.location.pathname.endsWith('admin.html')) {
+  const currentUser = JSON.parse(localStorage.getItem('currentUser') || 'null');
+  if (!currentUser || !currentUser.isAdmin) {
+    window.location.href = 'login.html';
+  }
+}

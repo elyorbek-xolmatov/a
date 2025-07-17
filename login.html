@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kirish | VIBE X ESPORTS</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Rajdhani:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="login-main" style="min-height:100vh; display:flex; align-items:center; justify-content:center; background:var(--primary);">
+    <section class="login-section">
+      <div style="text-align:center; margin-bottom:2rem;">
+        <div class="logo" style="justify-content:center;"><span>VIBE</span><span class="x">X</span><span class="esports">ESPORTS</span></div>
+      </div>
+      <h2 style="text-align:center; margin-bottom:1.5rem; color:var(--secondary); font-family:'Orbitron',sans-serif;">Kirish</h2>
+      <form class="login-form" id="loginForm" autocomplete="off">
+        <input type="text" name="username" placeholder="Foydalanuvchi nomi" required>
+        <input type="password" name="password" placeholder="Parol" required>
+        <div id="loginError" class="form-error" style="display:none;"></div>
+        <button type="submit" class="btn btn-primary" style="width:100%;">Kirish</button>
+      </form>
+      <div style="margin-top:1.5rem; text-align:center;">
+        <a href="#" style="color:var(--secondary); font-size:0.98rem; text-decoration:none;">Parolni unutdingizmi?</a>
+      </div>
+      <div style="margin-top:0.7rem; text-align:center;">
+        <span style="color:#888; font-size:0.97rem;">Yangi foydalanuvchi?</span>
+        <a href="register.html" style="color:var(--accent); font-size:0.97rem; margin-left:0.3rem;">Ro‘yxatdan o‘tish</a>
+      </div>
+    </section>
+  </main>
+  <script src="script.js"></script>
+</body>
+</html>

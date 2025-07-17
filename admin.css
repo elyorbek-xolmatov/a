@@ -1,0 +1,119 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Poppins:wght@400;500;600;700&display=swap');
+:root {
+  --poppins: 'Poppins', sans-serif;
+  --lato: 'Lato', sans-serif;
+  --light: #0e1621;
+  --blue: #00f0ff;
+  --light-blue: #1a2636;
+  --grey: #181f2a;
+  --dark-grey: #2c3440;
+  --dark: #0a0a12;
+  --red: #ff4d00;
+  --accent: #00f0ff;
+  --neon-glow: 0 0 10px rgba(0, 240, 255, 0.7);
+}
+body {
+  background: var(--grey);
+  font-family: var(--poppins);
+  color: #fff;
+  overflow-x: hidden;
+  transition: background 0.3s, color 0.3s;
+}
+body.dark {
+  --light: #0a0a12;
+  --grey: #181f2a;
+  --dark: #f5f5f5;
+  background: var(--grey);
+  color: #fff;
+}
+#sidebar {
+  position: fixed; top: 0; left: 0; width: 220px; height: 100%; background: var(--light); z-index: 2000;
+  font-family: var(--lato); transition: .3s ease; overflow-x: hidden; box-shadow: 0 0 32px 0 rgba(0,240,255,0.10);
+}
+#sidebar.hide { width: 60px; }
+#sidebar .brand { font-size: 24px; font-weight: 700; height: 56px; display: flex; align-items: center; color: var(--blue); padding-bottom: 20px; letter-spacing: 0.08em; }
+#sidebar .brand .bx { min-width: 60px; display: flex; justify-content: center; }
+#sidebar .side-menu { width: 100%; margin-top: 48px; }
+#sidebar .side-menu li { height: 48px; background: transparent; margin-left: 6px; border-radius: 48px 0 0 48px; padding: 4px; }
+#sidebar .side-menu li.active { background: var(--grey); position: relative; box-shadow: 0 0 16px 0 var(--blue); }
+#sidebar .side-menu li a { width: 100%; height: 100%; background: var(--light); display: flex; align-items: center; border-radius: 48px; font-size: 16px; color: #fff; white-space: nowrap; overflow-x: hidden; transition: color 0.2s, background 0.2s; }
+#sidebar .side-menu.top li.active a { color: var(--blue); background: var(--dark-grey); }
+#sidebar .side-menu li a.logout { color: var(--red); }
+#sidebar .side-menu.top li a:hover { color: var(--blue); background: var(--dark-grey); }
+#sidebar .side-menu li a .bx { min-width: 40px; display: flex; justify-content: center; }
+#sidebar .side-menu.bottom { position: absolute; bottom: 0; left: 0; width: 100%; }
+#content { position: relative; width: calc(100% - 220px); left: 220px; transition: .3s ease; }
+#sidebar.hide ~ #content { width: calc(100% - 60px); left: 60px; }
+#content nav {
+  height: 56px; background: var(--light); padding: 0 24px; display: flex; align-items: center; grid-gap: 24px;
+  font-family: var(--lato); position: sticky; top: 0; left: 0; z-index: 1000; box-shadow: 0 2px 8px 0 rgba(0,240,255,0.05);
+}
+#content nav .bx.bx-menu { cursor: pointer; color: var(--blue); font-size: 2rem; }
+#content nav .nav-link { font-size: 16px; color: #fff; transition: .3s ease; }
+#content nav .nav-link:hover { color: var(--blue); }
+#content nav form { max-width: 400px; width: 100%; margin-right: auto; }
+#content nav form .form-input { display: flex; align-items: center; height: 36px; }
+#content nav form .form-input input { flex-grow: 1; padding: 0 16px; height: 100%; border: none; background: var(--grey); border-radius: 36px 0 0 36px; outline: none; width: 100%; color: #fff; }
+#content nav form .form-input button { width: 36px; height: 100%; display: flex; justify-content: center; align-items: center; background: var(--blue); color: var(--dark); font-size: 18px; border: none; outline: none; border-radius: 0 36px 36px 0; cursor: pointer; }
+#content nav .notification { font-size: 20px; position: relative; color: var(--blue); }
+#content nav .notification .num { position: absolute; top: -6px; right: -6px; width: 20px; height: 20px; border-radius: 50%; border: 2px solid var(--light); background: var(--red); color: var(--light); font-weight: 700; font-size: 12px; display: flex; justify-content: center; align-items: center; }
+#content nav .notification-menu, #content nav .profile-menu { display: none; position: absolute; top: 56px; right: 0; background: var(--light); box-shadow: 0 2px 10px rgba(0, 240, 255, 0.08); border-radius: 15px; width: 250px; max-height: 300px; overflow-y: auto; z-index: 9999; font-family: var(--lato); color: #fff; }
+#content nav .notification-menu.show, #content nav .profile-menu.show { display: block; }
+#content nav .profile img { width: 36px; height: 36px; object-fit: cover; border-radius: 50%; }
+#content nav .profile-menu ul, #content nav .notification-menu ul { list-style: none; padding: 10px; margin: 0; }
+#content nav .profile-menu li, #content nav .notification-menu li { padding: 10px; border-bottom: 1px solid var(--grey); color: #fff; }
+#content nav .profile-menu li:hover, #content nav .notification-menu li:hover { background-color: var(--blue); color: var(--dark); }
+#content nav .profile-menu li a { color: #fff; font-size: 16px; }
+#content main { width: 100%; padding: 36px 24px; font-family: var(--poppins); min-height: calc(100vh - 56px); }
+#content main .head-title { display: flex; align-items: center; justify-content: space-between; grid-gap: 16px; flex-wrap: wrap; }
+#content main .head-title .left h1 { font-size: 36px; font-weight: 600; margin-bottom: 10px; color: #fff; }
+#content main .head-title .left .breadcrumb { display: flex; align-items: center; grid-gap: 16px; }
+#content main .head-title .left .breadcrumb li { color: #fff; }
+#content main .head-title .left .breadcrumb li a { color: var(--blue); pointer-events: none; }
+#content main .head-title .left .breadcrumb li a.active { color: var(--blue); pointer-events: unset; }
+#content main .box-info { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); grid-gap: 24px; margin-top: 36px; }
+#content main .box-info li { padding: 24px; background: var(--light-blue); border-radius: 20px; display: flex; align-items: center; grid-gap: 24px; box-shadow: 0 0 16px 0 var(--blue); }
+#content main .box-info li .bx { width: 80px; height: 80px; border-radius: 10px; font-size: 36px; display: flex; justify-content: center; align-items: center; background: var(--blue); color: var(--dark); box-shadow: 0 0 16px 0 var(--blue); }
+#content main .box-info li .text h3 { font-size: 24px; font-weight: 600; color: #fff; }
+#content main .box-info li .text p { color: #fff; }
+#content main .admin-page { animation: fadeIn 0.5s; }
+@keyframes fadeIn { from { opacity: 0; transform: translateY(20px);} to { opacity: 1; transform: none; } }
+#userList .user-row { display: flex; justify-content: space-between; align-items: center; padding: 10px 0; border-bottom: 1px solid var(--dark-grey); }
+#userList .user-row:last-child { border-bottom: none; }
+#userList .user-delete { background: none; border: none; color: var(--red); cursor: pointer; font-size: 1.1em; transition: color 0.2s; }
+#userList .user-delete:hover { color: #fff; text-shadow: 0 0 8px var(--red); }
+.sidebar-overlay { display: none; }
+@media (max-width: 1200px) {
+  #content main .box-info { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 900px) {
+  #sidebar { left: -220px; width: 220px; transition: left 0.3s; box-shadow: 0 0 32px 0 rgba(0,240,255,0.10); }
+  #sidebar.show { left: 0; }
+  #content { width: 100vw; left: 0; transition: none; }
+  .sidebar-overlay { display: none; position: fixed; z-index: 1999; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.45); transition: opacity 0.3s; }
+  .sidebar-overlay.active { display: block; }
+  #content main { padding: 24px 8px; }
+  #content nav { padding: 0 8px; }
+  #content main .box-info { grid-template-columns: 1fr; }
+  #sidebar .brand span.text { display: none; }
+  #sidebar .side-menu li a span.text { display: none; }
+}
+@media (max-width: 600px) {
+  #sidebar { width: 48px; }
+  #content { width: calc(100% - 48px); left: 48px; }
+  #content main { padding: 10px 2px; }
+  #content nav { padding: 0 2px; }
+  #content main .head-title .left h1 { font-size: 1.3rem; }
+  #content main .box-info li { flex-direction: column; align-items: flex-start; padding: 14px; }
+  #content main .box-info li .bx { width: 48px; height: 48px; font-size: 1.5rem; }
+  #content main .box-info li .text h3 { font-size: 1.1rem; }
+  #content main .box-info li .text p { font-size: 0.95rem; }
+  #userList .user-row { flex-direction: column; align-items: flex-start; gap: 4px; font-size: 0.98em; }
+}
+@media (max-width: 400px) {
+  #sidebar { width: 36px; }
+  #content { width: calc(100% - 36px); left: 36px; }
+  #content main { padding: 4px 1px; }
+  #content nav { padding: 0 1px; }
+  #content main .head-title .left h1 { font-size: 1rem; }
+} 
