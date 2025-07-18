@@ -26,6 +26,10 @@
   </section>
   <!-- SIDEBAR -->
 
+  <!-- OVERLAY -->
+  <div class="sidebar-overlay"></div>
+  <!-- OVERLAY -->
+
   <!-- CONTENT -->
   <section id="content">
     <!-- NAVBAR -->
@@ -46,12 +50,12 @@
       </label>
       <a href="#" class="notification" id="notificationIcon">
         <i class='bx bxs-bell bx-tada-hover'></i>
-        <span class="num">2</span>
+        <span class="num">0</span>
       </a>
       <div class="notification-menu" id="notificationMenu">
         <ul>
-          <li>Yangi foydalanuvchi ro‘yxatdan o‘tdi</li>
-          <li>Statistikada o‘zgarish</li>
+          <li>Yangi foydalanuvchi ro'yxatdan o'tdi</li>
+          <li>Statistikada o'zgarish</li>
         </ul>
       </div>
       <a href="#" class="profile" id="profileIcon">
@@ -96,29 +100,111 @@
               <p>Turnirlar</p>
             </span>
           </li>
+          <li>
+            <i class='bx bxs-calendar'></i>
+            <span class="text">
+              <h3 id="activeUsers">0</h3>
+              <p>Faol foydalanuvchilar</p>
+            </span>
+          </li>
+          <li>
+            <i class='bx bxs-chart'></i>
+            <span class="text">
+              <h3 id="newUsers">0</h3>
+              <p>Yangi foydalanuvchilar</p>
+            </span>
+          </li>
         </ul>
+        
+        <!-- Qo'shimcha statistika -->
+        <div class="stats-section" style="margin-top: 40px;">
+          <h3 style="color: #fff; margin-bottom: 20px;">So'nggi faollik</h3>
+          <div id="recentActivity" style="background: var(--light-blue); padding: 20px; border-radius: 15px;">
+            <p style="color: #888; text-align: center;">Faollik ma'lumotlari tez orada...</p>
+          </div>
+        </div>
       </div>
+      
       <!-- Foydalanuvchilar sahifasi -->
       <div id="users-page" class="admin-page" style="display:none;">
-        <h2>Foydalanuvchilar ro‘yxati</h2>
-        <div id="userList"></div>
+        <div class="head-title">
+          <div class="left">
+            <h1>Foydalanuvchilar</h1>
+            <ul class="breadcrumb">
+              <li><a href="#">Dashboard</a></li>
+              <li><i class='bx bx-chevron-right'></i></li>
+              <li><a class="active" href="#">Foydalanuvchilar</a></li>
+            </ul>
+          </div>
+          <div class="right">
+            <button class="btn-refresh" onclick="renderUsers()" style="background: var(--blue); color: var(--dark); border: none; padding: 10px 20px; border-radius: 8px; cursor: pointer;">
+              <i class='bx bx-refresh'></i> Yangilash
+            </button>
+          </div>
+        </div>
+        
+        <div class="users-container">
+          <div class="users-header" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; padding: 15px; background: var(--light-blue); border-radius: 10px;">
+            <h3 style="color: #fff; margin: 0;">Foydalanuvchilar ro'yxati</h3>
+            <span id="userCountDisplay" style="color: var(--blue); font-weight: 600;">0 ta foydalanuvchi</span>
+          </div>
+          <div id="userList"></div>
+        </div>
       </div>
+      
       <!-- Turnirlar sahifasi -->
       <div id="tournaments-page" class="admin-page" style="display:none;">
-        <h2>Turnirlar boshqaruvi</h2>
-        <div style="color:#888;">Bu bo‘lim tez orada to‘liq ishlaydi.</div>
+        <div class="head-title">
+          <div class="left">
+            <h1>Turnirlar</h1>
+            <ul class="breadcrumb">
+              <li><a href="#">Dashboard</a></li>
+              <li><i class='bx bx-chevron-right'></i></li>
+              <li><a class="active" href="#">Turnirlar</a></li>
+            </ul>
+          </div>
+        </div>
+        <div style="background: var(--light-blue); padding: 30px; border-radius: 15px; text-align: center;">
+          <i class='bx bxs-trophy' style="font-size: 4rem; color: var(--blue); margin-bottom: 20px;"></i>
+          <h3 style="color: #fff; margin-bottom: 10px;">Turnirlar boshqaruvi</h3>
+          <p style="color:#888;">Bu bo'lim tez orada to'liq ishlaydi.</p>
+        </div>
       </div>
+      
       <!-- Sozlamalar sahifasi -->
       <div id="settings-page" class="admin-page" style="display:none;">
-        <h2>Sozlamalar</h2>
-        <div style="color:#888;">Tez orada...</div>
+        <div class="head-title">
+          <div class="left">
+            <h1>Sozlamalar</h1>
+            <ul class="breadcrumb">
+              <li><a href="#">Dashboard</a></li>
+              <li><i class='bx bx-chevron-right'></i></li>
+              <li><a class="active" href="#">Sozlamalar</a></li>
+            </ul>
+          </div>
+        </div>
+        <div style="background: var(--light-blue); padding: 30px; border-radius: 15px;">
+          <h3 style="color: #fff; margin-bottom: 20px;">Admin panel sozlamalari</h3>
+          <div style="display: grid; gap: 20px;">
+            <div style="display: flex; justify-content: space-between; align-items: center; padding: 15px; background: var(--grey); border-radius: 10px;">
+              <span style="color: #fff;">Dark mode</span>
+              <input type="checkbox" id="darkModeToggle" style="transform: scale(1.5);">
+            </div>
+            <div style="display: flex; justify-content: space-between; align-items: center; padding: 15px; background: var(--grey); border-radius: 10px;">
+              <span style="color: #fff;">Bildirishnomalar</span>
+              <input type="checkbox" id="notificationsToggle" checked style="transform: scale(1.5);">
+            </div>
+            <div style="display: flex; justify-content: space-between; align-items: center; padding: 15px; background: var(--grey); border-radius: 10px;">
+              <span style="color: #fff;">Avtomatik yangilash</span>
+              <input type="checkbox" id="autoRefreshToggle" style="transform: scale(1.5);">
+            </div>
+          </div>
+        </div>
       </div>
     </main>
     <!-- MAIN -->
   </section>
   <!-- CONTENT -->
-
-  <div class="sidebar-overlay"></div>
 
   <script src="admin.js"></script>
 </body>
